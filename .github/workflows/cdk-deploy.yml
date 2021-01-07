@@ -1,0 +1,30 @@
+name: cdk-deploy
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "auth/**"
+
+defaults:
+  run:
+    working-directory: deploy
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: us-east-1
+
+      - name: Run cdk deployment
+        run: npm run deploy
