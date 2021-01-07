@@ -2,10 +2,12 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 const mount = (el: Element) => {
-  ReactDOM.render(<h1>Test</h1>, el);
+  ReactDOM.render(<h1>Landing Test</h1>, el);
 };
 
-if (process.env.NODE_ENV === "development") {
+// If its development mode and is a local run (i.e. outside container)
+// @ts-ignore [these values are supplied globally by webpack]
+if (BUILD_MODE === "development" && APP_PACKAGE === "landing") {
   const rootNode = document.querySelector("#root");
 
   if (rootNode) {
