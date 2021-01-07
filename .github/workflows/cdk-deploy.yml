@@ -27,5 +27,6 @@ jobs:
           aws-region: us-east-1
 
       - name: Run cdk deployment
-        - run: npm install
-        - run: npm run deploy
+        run:
+          - npm install
+          - npm run deploy
