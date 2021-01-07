@@ -5,17 +5,11 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = () => {
   return {
-    mode: "development",
+    mode: "production",
     entry: "./src/index",
     output: {
-      publicPath: "http://localhost:8080/",
+      publicPath: "/",
       filename: "[name].[hash].js",
-    },
-    devServer: {
-      port: 8080,
-      historyApiFallback: {
-        index: "index.html",
-      },
     },
     resolve: {
       extensions: [".ts", ".tsx", ".js", ".jsx"],
