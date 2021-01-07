@@ -1,5 +1,7 @@
 const { merge } = require("webpack-merge");
+const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 const commonConfig = require("./webpack.common");
+const packageJson = require("./package.json");
 
 module.exports = () => {
   const prodConfig = {
@@ -8,6 +10,16 @@ module.exports = () => {
       publicPath: "/landing/",
       filename: "[name].[hash].js",
     },
+    plugins: [
+      new ModuleFederationPlugin({
+        name: "landing",
+        filename: "remoteEntry.js",
+        exposes: {
+          "./LandingModule": "./src/bootstrap",
+        },
+        shared: packageJson.dependencies,
+      }),
+    ],
   };
 
   return merge(commonConfig, prodConfig);
