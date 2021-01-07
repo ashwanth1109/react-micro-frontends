@@ -1,6 +1,6 @@
 import { App, RemovalPolicy, Stack, StackProps } from "@aws-cdk/core";
 import { Bucket } from "@aws-cdk/aws-s3";
-// import { BucketDeployment, Source } from "@aws-cdk/aws-s3-deployment";
+import { BucketDeployment, Source } from "@aws-cdk/aws-s3-deployment";
 
 export class DeployStack extends Stack {
   constructor(scope: App, id: string, props?: StackProps) {
@@ -15,10 +15,10 @@ export class DeployStack extends Stack {
       removalPolicy: RemovalPolicy.RETAIN,
     });
 
-    // new BucketDeployment(this, "DeployFEAssets", {
-    //   destinationBucket,
-    //   sources: [Source.asset("../container/dist")],
-    //   destinationKeyPrefix: "container",
-    // });
+    new BucketDeployment(this, "DeployFEAssets", {
+      destinationBucket,
+      sources: [Source.asset("../container/dist")],
+      destinationKeyPrefix: "container",
+    });
   }
 }

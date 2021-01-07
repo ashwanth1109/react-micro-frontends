@@ -39,5 +39,5 @@ jobs:
       - name: Install deploy dependencies
         run: npm install
 
-#      - name: Run cdk deployment
-#        run: npm run deploy
+      - name: Run cdk deployment
+        run: npm run deploy
