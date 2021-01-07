@@ -26,7 +26,8 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
 
+      - name: Install dependencies
+        run: npm install
+
       - name: Run cdk deployment
-        run:
-          - npm install
-          - npm run deploy
+        run: npm run deploy
