@@ -15,9 +15,15 @@ export class DeployStack extends Stack {
       removalPolicy: RemovalPolicy.RETAIN,
     });
 
-    new BucketDeployment(this, "DeployFEAssets", {
+    new BucketDeployment(this, "DeployContainerAssets", {
       destinationBucket,
       sources: [Source.asset("../container/dist")],
+    });
+
+    new BucketDeployment(this, "DeployLandingAssets", {
+      destinationBucket,
+      sources: [Source.asset("../landing/dist")],
+      destinationKeyPrefix: "/landing/",
     });
   }
 }

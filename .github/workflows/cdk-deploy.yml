@@ -36,6 +36,14 @@ jobs:
         run: npm run build
         working-directory: container
 
+      - name: Install landing dependencies
+        run: npm install
+        working-directory: landing
+
+      - name: Build landing dist
+        run: npm run build
+        working-directory: landing
+
       - name: Install deploy dependencies
         run: npm install
 
