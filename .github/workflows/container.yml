@@ -1,0 +1,25 @@
+name: invalidate-container
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "container/**"
+      - ".github/workflows/container.yml"
+
+defaults:
+  run:
+    working-directory: container
+
+jobs:
+  invalidate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Run cache invalidation for index.html
+        uses: chrislennon/action-aws-cli@v1.1
+        run: aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_DISTRIBUTION_ID }} --paths "/index.html"
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}

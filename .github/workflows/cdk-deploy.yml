@@ -8,7 +8,7 @@ on:
       - "deploy/**"
       - "container/**"
       - "landing/**"
-      - ".github/**"
+      - ".github/workflows/cdk-deploy.yml"
 
 defaults:
   run:
