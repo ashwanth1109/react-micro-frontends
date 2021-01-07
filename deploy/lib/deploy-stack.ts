@@ -18,7 +18,6 @@ export class DeployStack extends Stack {
     new BucketDeployment(this, "DeployFEAssets", {
       destinationBucket,
       sources: [Source.asset("../container/dist")],
-      destinationKeyPrefix: "container",
     });
   }
 }
