@@ -8,6 +8,7 @@ on:
       - "deploy/**"
       - "container/**"
       - "landing/**"
+      - ".github/**"
 
 defaults:
   run:

@@ -1,4 +1,10 @@
-import { App, RemovalPolicy, Stack, StackProps } from "@aws-cdk/core";
+import {
+  App,
+  CfnOutput,
+  RemovalPolicy,
+  Stack,
+  StackProps,
+} from "@aws-cdk/core";
 import { Bucket } from "@aws-cdk/aws-s3";
 import { BucketDeployment, Source } from "@aws-cdk/aws-s3-deployment";
 import {
@@ -49,6 +55,10 @@ export class DeployStack extends Stack {
           errorCachingMinTtl: 10,
         },
       ],
+    });
+
+    new CfnOutput(this, "CdnUrl", {
+      value: distribution.distributionDomainName,
     });
   }
 }
