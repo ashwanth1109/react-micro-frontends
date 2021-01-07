@@ -36,6 +36,8 @@ jobs:
       - name: Build container dist
         run: npm run build
         working-directory: container
+        env:
+          PRODUCTION_DOMAIN: ${{ secrets.PRODUCTION_DOMAIN }}
 
       - name: Install landing dependencies
         run: npm install
