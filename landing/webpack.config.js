@@ -14,7 +14,6 @@ module.exports = (env) => {
       filename: "[name].[hash].js",
     },
     devServer: {
-      contentBase: "./dist",
       port: 8081,
       historyApiFallback: {
         index: "index.html",
