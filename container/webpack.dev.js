@@ -1,6 +1,7 @@
-const webpack = require("webpack");
+const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 const { merge } = require("webpack-merge");
 const commonConfig = require("./webpack.common");
+const packageJson = require("./package.json");
 
 module.exports = () => {
   const devConfig = {
@@ -16,9 +17,12 @@ module.exports = () => {
       },
     },
     plugins: [
-      new webpack.DefinePlugin({
-        BUILD_MODE: JSON.stringify("development"),
-        APP_PACKAGE: JSON.stringify("container"),
+      new ModuleFederationPlugin({
+        name: "container",
+        remotes: {
+          landing: "landing@http://localhost:8081/remoteEntry.js",
+        },
+        shared: packageJson.dependencies,
       }),
     ],
   };
