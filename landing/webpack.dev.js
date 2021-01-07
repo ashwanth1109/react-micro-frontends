@@ -1,5 +1,6 @@
 const webpack = require("webpack");
 const { merge } = require("webpack-merge");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 const commonConfig = require("./webpack.common");
 
 module.exports = () => {
@@ -16,6 +17,9 @@ module.exports = () => {
       },
     },
     plugins: [
+      new HtmlWebpackPlugin({
+        template: "./public/index.html",
+      }),
       new webpack.DefinePlugin({
         BUILD_MODE: JSON.stringify("development"),
         APP_PACKAGE: JSON.stringify("landing"),

@@ -23,7 +23,7 @@ export class DeployStack extends Stack {
     new BucketDeployment(this, "DeployLandingAssets", {
       destinationBucket,
       sources: [Source.asset("../landing/dist")],
-      destinationKeyPrefix: "/landing/",
+      destinationKeyPrefix: "landing/",
     });
   }
 }
