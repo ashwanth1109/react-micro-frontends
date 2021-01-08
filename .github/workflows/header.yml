@@ -1,0 +1,32 @@
+name: invalidate-header
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "header/**"
+      - ".github/workflows/header.yml"
+
+
+defaults:
+  run:
+    working-directory: header
+
+jobs:
+  invalidate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: ACTIONS_ALLOW_UNSECURE_COMMANDS
+        run: echo 'ACTIONS_ALLOW_UNSECURE_COMMANDS=true' >> $GITHUB_ENV
+
+      - uses: chrislennon/action-aws-cli@v1.1
+
+      - name: Run cache invalidation for index.html
+        run: aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_DISTRIBUTION_ID }} --paths "/header/remoteEntry.js"
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}

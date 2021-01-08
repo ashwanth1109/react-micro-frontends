@@ -1,11 +1,15 @@
 import React, { useEffect, useRef } from "react";
 import { mount } from "auth/AuthModule";
 
-export default () => {
+interface AuthProps {
+  login: () => void;
+}
+
+export default ({ login }: AuthProps) => {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    mount(ref.current);
+    mount(ref.current, { login });
   }, []);
 
   return <div ref={ref} />;

@@ -3,22 +3,19 @@ const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPl
 const commonConfig = require("./webpack.common");
 const packageJson = require("./package.json");
 
-const domain = process.env.PRODUCTION_DOMAIN;
-
 module.exports = () => {
   const prodConfig = {
     mode: "production",
     output: {
-      publicPath: "/",
+      publicPath: "/header/",
       filename: "[name].js",
     },
     plugins: [
       new ModuleFederationPlugin({
-        name: "container",
-        remotes: {
-          landing: `landing@${domain}/landing/remoteEntry.js`,
-          auth: `auth@${domain}/auth/remoteEntry.js`,
-          header: `header@${domain}/header/remoteEntry.js`,
+        name: "header",
+        filename: "remoteEntry.js",
+        exposes: {
+          "./HeaderComponent": "./src/bootstrap",
         },
         shared: packageJson.dependencies,
       }),

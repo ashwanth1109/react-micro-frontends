@@ -1,9 +1,16 @@
-import React, { useCallback } from "react";
-import { BehaviorSubject } from "rxjs";
+import React, { useCallback, useEffect } from "react";
 
 const App = () => {
   const navigateToAuth = useCallback(() => {
     //
+  }, []);
+
+  useEffect(() => {
+    console.log("landing effect called");
+
+    return () => {
+      console.log("landing cleanup called");
+    };
   }, []);
 
   return (

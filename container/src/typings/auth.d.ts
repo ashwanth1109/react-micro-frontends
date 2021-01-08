@@ -1,8 +1,9 @@
+interface MountOptions {
+  login: VoidFunction;
+}
+
 declare module "auth/AuthModule" {
-  import { BehaviorSubject } from "rxjs";
-  const mount: (
-    el: HTMLDivElement | null
-  ) => null;
+  const mount: (el: HTMLDivElement | null, options: MountOptions) => null;
 
   export { mount };
 }

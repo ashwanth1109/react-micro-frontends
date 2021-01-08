@@ -1,5 +1,5 @@
 {
-  "name": "landing",
+  "name": "header",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -30,7 +30,6 @@
   "dependencies": {
     "react": "17.0.1",
     "react-dom": "17.0.1",
-    "react-router-dom": "5.2.0",
-    "rxjs": "^6.6.3"
+    "react-router-dom": "5.2.0"
   }
 }
