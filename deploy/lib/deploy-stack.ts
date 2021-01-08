@@ -39,6 +39,13 @@ export class DeployStack extends Stack {
       prune: false,
     });
 
+    new BucketDeployment(this, "DeployHeaderAssets", {
+      destinationBucket,
+      sources: [Source.asset("../header/dist")],
+      destinationKeyPrefix: "header/",
+      prune: false,
+    });
+
     new BucketDeployment(this, "DeployContainerAssets", {
       destinationBucket,
       sources: [Source.asset("../container/dist")],
