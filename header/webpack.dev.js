@@ -1,5 +1,6 @@
-const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 const { merge } = require("webpack-merge");
+const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 const commonConfig = require("./webpack.common");
 const packageJson = require("./package.json");
 
@@ -7,24 +8,26 @@ module.exports = () => {
   const devConfig = {
     mode: "development",
     output: {
-      publicPath: "http://localhost:8080/",
+      publicPath: "http://localhost:8083/",
       filename: "[name].[hash].js",
     },
     devServer: {
-      port: 8080,
+      port: 8083,
       historyApiFallback: {
-        index: "/",
+        index: "index.html",
       },
     },
     plugins: [
       new ModuleFederationPlugin({
-        name: "container",
-        remotes: {
-          landing: "landing@http://localhost:8081/remoteEntry.js",
-          auth: "auth@http://localhost:8082/remoteEntry.js",
-          header: "header@http://localhost:8083/remoteEntry.js"
+        name: "header",
+        filename: "remoteEntry.js",
+        exposes: {
+          "./HeaderComponent": "./src/bootstrap",
         },
         shared: packageJson.dependencies,
+      }),
+      new HtmlWebpackPlugin({
+        template: "./public/index.html",
       }),
     ],
   };

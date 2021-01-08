@@ -1,14 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BehaviorSubject } from "rxjs";
-import App from "./App";
+import Header from "./Header";
 
 const mount = (el: Element) => {
-  ReactDOM.render(<App />, el);
+  ReactDOM.render(<Header />, el);
 };
 
 if (process.env.NODE_ENV === "development") {
-  const rootNode = document.querySelector("#auth-module-root");
+  const rootNode = document.querySelector("#header-component-root");
 
   if (rootNode) {
     mount(rootNode);

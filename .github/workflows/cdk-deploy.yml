@@ -56,6 +56,14 @@ jobs:
         run: npm run build
         working-directory: auth
 
+      - name: Install header dependencies
+        run: npm install
+        working-directory: header
+
+      - name: Build header dist
+        run: npm run build
+        working-directory: header
+
       - name: Install deploy dependencies
         run: npm install
 

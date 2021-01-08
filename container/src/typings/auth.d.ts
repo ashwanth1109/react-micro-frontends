@@ -1,5 +1,9 @@
-declare module "auth/AuthModule" {
-    const mount: (el: HTMLDivElement | null) => null;
+interface MountOptions {
+  login: VoidFunction;
+}
 
-    export { mount };
+declare module "auth/AuthModule" {
+  const mount: (el: HTMLDivElement | null, options: MountOptions) => null;
+
+  export { mount };
 }
