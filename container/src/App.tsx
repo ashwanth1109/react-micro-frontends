@@ -1,28 +1,26 @@
 import React, { lazy, Suspense } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 
 const LandingLazy = lazy(() => import("./modules/Landing"));
 const AuthLazy = lazy(() => import("./modules/Auth"));
 
 const App = () => {
   return (
-    <Router>
+    <div>
+      <h1>Container App</h1>
       <div>
-        <h1>Container App</h1>
-        <div>
-          <Suspense fallback={<div>Loading . . .</div>}>
-            <Switch>
-              <Route path="/auth">
-                <AuthLazy />
-              </Route>
-              <Route path="/">
-                <LandingLazy />
-              </Route>
-            </Switch>
-          </Suspense>
-        </div>
+        <Suspense fallback={<div>Loading . . .</div>}>
+          <Switch>
+            <Route path="/auth">
+              <AuthLazy route$={route$} />
+            </Route>
+            <Route path="/">
+              <LandingLazy route$={route$} />
+            </Route>
+          </Switch>
+        </Suspense>
       </div>
-    </Router>
+    </div>
   );
 };
 

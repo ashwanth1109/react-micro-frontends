@@ -1,5 +1,8 @@
 declare module "auth/AuthModule" {
-    const mount: (el: HTMLDivElement | null) => null;
+  import { BehaviorSubject } from "rxjs";
+  const mount: (
+    el: HTMLDivElement | null
+  ) => null;
 
-    export { mount };
+  export { mount };
 }

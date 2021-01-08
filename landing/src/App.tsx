@@ -1,13 +1,9 @@
 import React, { useCallback } from "react";
 import { BehaviorSubject } from "rxjs";
 
-const App = ({ route$ }: { route$: BehaviorSubject<string> }) => {
-  route$.subscribe((val) => {
-    console.log("Route emitted inside landing:", val);
-  });
-
+const App = () => {
   const navigateToAuth = useCallback(() => {
-    route$.next("/auth");
+    //
   }, []);
 
   return (
