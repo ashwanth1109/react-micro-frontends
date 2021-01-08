@@ -9,7 +9,7 @@ const AuthLazy = lazy(() => import("./modules/Auth"));
 
 const HeaderContainer = styled.div`
   height: 60px;
-  margin-bottom: 16px;
+  background-color: #282c34;
 `;
 
 const App = () => {
