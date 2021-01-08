@@ -1,11 +1,12 @@
 import { useCallback, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 
-interface UseAuthProps {
+interface UseAuthFunctions {
   login: VoidFunction;
   logout: VoidFunction;
 }
-const useAuth = (): UseAuthProps => {
+
+const useAuth = (): UseAuthFunctions => {
   const history = useHistory();
   const [isSignedIn, setIsSignedIn] = useState(false);
 

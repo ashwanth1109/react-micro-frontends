@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from "react";
+import React, { useCallback } from "react";
 import styled from "@emotion/styled";
 import { Button } from "@material-ui/core";
 
@@ -24,25 +24,19 @@ const Description = styled.h2`
   color: white;
 `;
 
-const App = () => {
+const App = ({ navigate }: { navigate: NavigateFunction }) => {
   const navigateToAuth = useCallback(() => {
-    //
-  }, []);
-
-  useEffect(() => {
-    console.log("landing effect called");
-
-    return () => {
-      console.log("landing cleanup called");
-    };
-  }, []);
+    navigate("/auth/signin");
+  }, [navigate]);
 
   return (
     <div>
       <Header>
         <Title>Landing Microfrontend (route)</Title>
-        <Description>Page description goes here</Description>
-        <Button style={{ background: "#1DB954" }}>Get Started</Button>
+        <Description>Some random text goes here</Description>
+        <Button style={{ background: "#1DB954" }} onClick={navigateToAuth}>
+          Get Started
+        </Button>
       </Header>
     </div>
   );
