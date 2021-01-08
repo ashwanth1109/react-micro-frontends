@@ -1,6 +1,7 @@
 import React, { lazy, Suspense } from "react";
 
 const LandingLazy = lazy(() => import("./modules/Landing"));
+const AuthLazy = lazy(() => import("./modules/Auth"));
 
 const App = () => {
   return (
@@ -9,6 +10,7 @@ const App = () => {
       <div>
         <Suspense fallback={<div>Loading . . .</div>}>
           <LandingLazy />
+          <AuthLazy />
         </Suspense>
       </div>
     </div>
