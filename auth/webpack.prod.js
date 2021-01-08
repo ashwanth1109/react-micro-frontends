@@ -8,7 +8,7 @@ module.exports = () => {
     mode: "production",
     output: {
       publicPath: "/auth/",
-      filename: "[name].[hash].js",
+      filename: "[name].js",
     },
     plugins: [
       new ModuleFederationPlugin({
