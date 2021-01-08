@@ -25,21 +25,24 @@ export class DeployStack extends Stack {
       removalPolicy: RemovalPolicy.RETAIN,
     });
 
-    new BucketDeployment(this, "DeployContainerAssets", {
-      destinationBucket,
-      sources: [Source.asset("../container/dist")],
-    });
-
     new BucketDeployment(this, "DeployLandingAssets", {
       destinationBucket,
       sources: [Source.asset("../landing/dist")],
       destinationKeyPrefix: "landing/",
+      prune: false,
     });
 
     new BucketDeployment(this, "DeployAuthAssets", {
       destinationBucket,
       sources: [Source.asset("../auth/dist")],
       destinationKeyPrefix: "auth/",
+      prune: false,
+    });
+
+    new BucketDeployment(this, "DeployContainerAssets", {
+      destinationBucket,
+      sources: [Source.asset("../container/dist")],
+      prune: false,
     });
 
     const distribution = new CloudFrontWebDistribution(this, "React-MFE-CDN", {
