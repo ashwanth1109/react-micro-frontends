@@ -10,7 +10,7 @@ module.exports = () => {
     mode: "production",
     output: {
       publicPath: "/",
-      filename: "[name].js",
+      filename: "[name].[hash].js",
     },
     plugins: [
       new ModuleFederationPlugin({
