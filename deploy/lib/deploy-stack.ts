@@ -36,6 +36,12 @@ export class DeployStack extends Stack {
       destinationKeyPrefix: "landing/",
     });
 
+    new BucketDeployment(this, "DeployAuthAssets", {
+      destinationBucket,
+      sources: [Source.asset("../auth/dist")],
+      destinationKeyPrefix: "auth/",
+    });
+
     const distribution = new CloudFrontWebDistribution(this, "React-MFE-CDN", {
       originConfigs: [
         {

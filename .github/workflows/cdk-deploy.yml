@@ -47,6 +47,15 @@ jobs:
         run: npm run build
         working-directory: landing
 
+
+      - name: Install auth dependencies
+        run: npm install
+        working-directory: auth
+
+      - name: Build auth dist
+        run: npm run build
+        working-directory: auth
+
       - name: Install deploy dependencies
         run: npm install
 
