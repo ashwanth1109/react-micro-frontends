@@ -17,14 +17,18 @@ const CardTitle = styled.h1`
   margin: 24px 0;
 `;
 
-const App = () => {
+interface AppProps {
+  login: VoidFunction;
+}
+
+const App = ({ login }: AppProps) => {
   return (
     <CardContainer>
       <Card variant="outlined">
         <CardTitle>Auth microfrontend (2 routes)</CardTitle>
         <Switch>
           <Route path="/auth/login">
-            <Login />
+            <Login login={login} />
           </Route>
           <Route path="/auth/register">
             <Register />

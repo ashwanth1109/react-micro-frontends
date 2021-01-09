@@ -4,9 +4,10 @@ import { Link } from "react-router-dom";
 import Input from "./Input";
 import { CardFooter, TabTitle } from "./styled";
 
-const Login = () => {
+const Login = ({ login }: { login: VoidFunction }) => {
   const onLogin = useCallback(() => {
-    console.log("login");
+    // verify details are correct (not implemented) and login
+    login();
   }, []);
 
   return (
