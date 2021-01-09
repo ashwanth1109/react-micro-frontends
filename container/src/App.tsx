@@ -6,6 +6,7 @@ import styled from "@emotion/styled";
 
 const LandingLazy = lazy(() => import("./modules/Landing"));
 const AuthLazy = lazy(() => import("./modules/Auth"));
+const DashboardLazy = lazy(() => import("./modules/Dashboard"));
 
 const HeaderContainer = styled.div`
   height: 60px;
@@ -26,6 +27,9 @@ const App = () => {
           <Switch>
             <Route path="/auth">
               <AuthLazy login={login} history={history} />
+            </Route>
+            <Route path="/dashboard">
+              <DashboardLazy />
             </Route>
             <Route path="/">
               <LandingLazy />

@@ -19,6 +19,7 @@ module.exports = () => {
           landing: `landing@${domain}/landing/remoteEntry.js`,
           auth: `auth@${domain}/auth/remoteEntry.js`,
           header: `header@${domain}/header/remoteEntry.js`,
+          dashboard: `dashboard@${domain}/dashboard/remoteEntry.js`,
         },
         shared: packageJson.dependencies,
       }),
