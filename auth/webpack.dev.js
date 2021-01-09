@@ -9,7 +9,7 @@ module.exports = () => {
     mode: "development",
     output: {
       publicPath: "http://localhost:8082/",
-      filename: "[name].[hash].js",
+      filename: "[name].[contenthash].js",
     },
     devServer: {
       port: 8082,

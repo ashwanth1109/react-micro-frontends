@@ -8,7 +8,7 @@ module.exports = () => {
     mode: "production",
     output: {
       publicPath: "/header/",
-      filename: "[name].[hash].js",
+      filename: "[name].[contenthash].js",
     },
     plugins: [
       new ModuleFederationPlugin({

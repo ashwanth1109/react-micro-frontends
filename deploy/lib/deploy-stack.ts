@@ -29,23 +29,27 @@ export class DeployStack extends Stack {
       destinationBucket,
       sources: [Source.asset("../landing/dist")],
       destinationKeyPrefix: "landing/",
+      prune: false,
     });
 
     new BucketDeployment(this, "DeployAuthAssets", {
       destinationBucket,
       sources: [Source.asset("../auth/dist")],
       destinationKeyPrefix: "auth/",
+      prune: false,
     });
 
     new BucketDeployment(this, "DeployHeaderAssets", {
       destinationBucket,
       sources: [Source.asset("../header/dist")],
       destinationKeyPrefix: "header/",
+      prune: false,
     });
 
     new BucketDeployment(this, "DeployContainerAssets", {
       destinationBucket,
       sources: [Source.asset("../container/dist")],
+      prune: false,
     });
 
     const distribution = new CloudFrontWebDistribution(this, "React-MFE-CDN", {
