@@ -18,7 +18,10 @@ if (process.env.NODE_ENV === "development") {
   const rootNode = document.querySelector("#auth-module-root");
 
   if (rootNode) {
-    mount(rootNode, { history: createBrowserHistory(), login: () => {} });
+    mount(rootNode, {
+      history: createBrowserHistory(),
+      login: () => {},
+    });
   }
 }
 

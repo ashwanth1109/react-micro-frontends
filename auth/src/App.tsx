@@ -1,8 +1,7 @@
 import React from "react";
 import { Card } from "@material-ui/core";
 import styled from "@emotion/styled";
-import { Router, Switch, Route } from "react-router-dom";
-import { History } from "history";
+import { Switch, Route } from "react-router-dom";
 
 import Login from "./components/Login";
 import Register from "./components/Register";
