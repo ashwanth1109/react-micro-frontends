@@ -8,9 +8,10 @@ const exec = util.promisify(cp.exec);
 
 async function execInModule(cmd: string, cwd: string) {
   // TODO: Need to pipe the input via a writeable stream
-  const { stdout, stderr } = await exec(cmd, { cwd });
-  console.log(stdout);
-  console.log(stderr);
+  const execProcess = cp.exec(cmd, { cwd });
+  execProcess.stdout?.pipe(process.stdout);
+  // console.log(stdout);
+  // console.log(stderr);
 }
 
 (async () => {
@@ -20,9 +21,7 @@ async function execInModule(cmd: string, cwd: string) {
     console.log(`Generating micro-frontend at path: ${modulePath}`);
     const cwd = path.resolve(__dirname, `..${modulePath}`);
 
-    await fs.emptyDir(cwd);
-
-    await execInModule("npm init -y", cwd);
+    fs.emptyDirSync(cwd);
 
     const devDeps = [
       "@babel/core@7.12.10",
@@ -41,11 +40,33 @@ async function execInModule(cmd: string, cwd: string) {
       "webpack-merge@5.7.3",
     ];
 
-    await execInModule(`npm i -D ${devDeps.join(" ")}`, cwd);
+    // `react-router-dom` and `rxjs` need to be manually installed
+    const deps = [
+      "react@17.0.1",
+      "react-dom@17.0.1",
+      "@emotion/react@11.1.4",
+      "@emotion/styled@11.0.0",
+      "@material-ui/core@4.11.2",
+    ];
 
-    const deps = ["react@17.0.1", "react-dom@17.0.1"];
+    cp.spawn(
+      `npm init -y && npm i -D ${devDeps.join(" ")} && npm i ${deps.join(" ")}`,
+      {
+        cwd,
+        shell: true,
+        stdio: "inherit",
+      }
+    );
 
-    await execInModule(`npm i ${deps.join(" ")}`, cwd);
+    // cp.spawn(`npm i -D ${devDeps.join(" ")}`, {
+    //   cwd,
+    //   shell: true,
+    //   stdio: "inherit",
+    // });
+    // await execInModule(`npm i -D ${devDeps.join(" ")}`, cwd);
+    //
+
+    // await execInModule(`npm i ${deps.join(" ")}`, cwd);
   } catch (e) {
     console.error(e);
   }
