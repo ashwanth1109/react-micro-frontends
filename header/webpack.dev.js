@@ -14,7 +14,7 @@ module.exports = () => {
     devServer: {
       port: 8083,
       historyApiFallback: {
-        index: "index.html",
+        index: "/",
       },
     },
     plugins: [

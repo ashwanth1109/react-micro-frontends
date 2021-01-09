@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import styled from "@emotion/styled";
 import Button from "@material-ui/core/Button";
 
@@ -16,10 +16,16 @@ const Container = styled.div`
   justify-content: space-between;
 `;
 
-const Header = () => {
+const Header = ({ navigate }: HeaderMountOptions) => {
+  const navigateToLanding = useCallback(() => {
+    navigate("/");
+  }, []);
+
   return (
     <Container>
-      <h3>Header Microfrontend</h3>
+      <h3 onClick={navigateToLanding} style={{ cursor: "pointer" }}>
+        Header Microfrontend
+      </h3>
       <Button
         variant="outlined"
         style={{ color: "white", borderColor: "white" }}
