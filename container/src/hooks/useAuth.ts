@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { History } from "history";
-import { BehaviorSubject } from "rxjs";
 
 interface UseAuthFunctions {
   login: VoidFunction;

@@ -1,0 +1,7 @@
+import React from "react";
+
+const App = () => {
+  return <div>__MODULE_NAME_CAPITALIZED__</div>;
+};
+
+export default App;

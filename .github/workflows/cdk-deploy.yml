@@ -8,6 +8,8 @@ on:
       - "deploy/**"
       - "container/**"
       - "landing/**"
+      - "header/**"
+      - "dashboard/**"
       - ".github/workflows/cdk-deploy.yml"
 
 defaults:
@@ -64,6 +66,14 @@ jobs:
         run: npm run build
         working-directory: header
 
+      - name: Install dashboard dependencies
+        run: npm install
+        working-directory: dashboard
+
+      - name: Build dashboard dist
+        run: npm run build
+        working-directory: dashboard
+
       - name: Install deploy dependencies
         run: npm install
 
@@ -74,7 +84,7 @@ jobs:
         run: echo 'ACTIONS_ALLOW_UNSECURE_COMMANDS=true' >> $GITHUB_ENV
 
       - name: Run cache invalidation
-        run: aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_DISTRIBUTION_ID }} --paths "/auth/remoteEntry.js" "/landing/remoteEntry.js" "/index.html" "/header/remoteEntry.js"
+        run: aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_DISTRIBUTION_ID }} --paths "/auth/remoteEntry.js" "/landing/remoteEntry.js" "/index.html" "/header/remoteEntry.js" "/dashboard/remoteEntry.js"
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
