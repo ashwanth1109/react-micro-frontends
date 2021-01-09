@@ -26,7 +26,7 @@ const Description = styled.h2`
 
 const App = ({ navigate }: { navigate: NavigateFunction }) => {
   const navigateToAuth = useCallback(() => {
-    navigate("/auth/signin");
+    navigate("/auth/login");
   }, [navigate]);
 
   return (

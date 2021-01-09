@@ -1,5 +1,6 @@
 interface AuthMountOptions {
   login: VoidFunction;
+  history: import("history").History<unknown>;
 }
 
 declare module "auth/AuthModule" {

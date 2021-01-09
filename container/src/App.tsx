@@ -13,7 +13,7 @@ const HeaderContainer = styled.div`
 `;
 
 const App = () => {
-  const { login } = useAuth();
+  const { login, history } = useAuth();
 
   return (
     <div>
@@ -25,7 +25,7 @@ const App = () => {
         <Suspense fallback={<div>Loading . . .</div>}>
           <Switch>
             <Route path="/auth">
-              <AuthLazy login={login} />
+              <AuthLazy login={login} history={history} />
             </Route>
             <Route path="/">
               <LandingLazy />
