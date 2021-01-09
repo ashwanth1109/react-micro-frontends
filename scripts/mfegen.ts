@@ -1,18 +1,7 @@
 import * as yargs from "yargs";
 import * as fs from "fs-extra";
-import * as util from "util";
 import * as cp from "child_process";
 import * as path from "path";
-
-const exec = util.promisify(cp.exec);
-
-async function execInModule(cmd: string, cwd: string) {
-  // TODO: Need to pipe the input via a writeable stream
-  const execProcess = cp.exec(cmd, { cwd });
-  execProcess.stdout?.pipe(process.stdout);
-  // console.log(stdout);
-  // console.log(stderr);
-}
 
 (async () => {
   try {
@@ -57,16 +46,6 @@ async function execInModule(cmd: string, cwd: string) {
         stdio: "inherit",
       }
     );
-
-    // cp.spawn(`npm i -D ${devDeps.join(" ")}`, {
-    //   cwd,
-    //   shell: true,
-    //   stdio: "inherit",
-    // });
-    // await execInModule(`npm i -D ${devDeps.join(" ")}`, cwd);
-    //
-
-    // await execInModule(`npm i ${deps.join(" ")}`, cwd);
   } catch (e) {
     console.error(e);
   }
