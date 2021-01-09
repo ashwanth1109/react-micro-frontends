@@ -1,6 +1,7 @@
 interface HeaderMountOptions {
   navigate: NavigateFunction;
-  isSignedIn$: import("rxjs").BehaviorSubject<boolean>;
+  isSignedIn$: import("rxjs").Observable<boolean>;
+  logout: VoidFunction;
 }
 
 declare module "header/HeaderComponent" {

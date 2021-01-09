@@ -14,12 +14,12 @@ const HeaderContainer = styled.div`
 `;
 
 const App = () => {
-  const { login, history, isSignedIn$ } = useAuth();
+  const { login, history, isSignedIn$, logout } = useAuth();
 
   return (
     <div>
       <HeaderContainer>
-        <Header isSignedIn$={isSignedIn$}/>
+        <Header isSignedIn$={isSignedIn$} logout={logout} />
       </HeaderContainer>
 
       <div>

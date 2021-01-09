@@ -16,7 +16,7 @@ const Container = styled.div`
   justify-content: space-between;
 `;
 
-const Header = ({ navigate, isSignedIn$ }: HeaderMountOptions) => {
+const Header = ({ navigate, isSignedIn$, logout }: HeaderMountOptions) => {
   const [isSignedIn, setIsSignedIn] = useState(false);
 
   const navigateToLanding = useCallback(() => {
@@ -38,9 +38,11 @@ const Header = ({ navigate, isSignedIn$ }: HeaderMountOptions) => {
       <h3 onClick={navigateToLanding} style={{ cursor: "pointer" }}>
         Header Microfrontend
       </h3>
+
       <Button
         variant="outlined"
         style={{ color: "white", borderColor: "white" }}
+        onClick={() => (isSignedIn ? logout() : navigate("/auth/login"))}
       >
         {isSignedIn ? "Logout" : "Login"}
       </Button>

@@ -1,10 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import Header from "./Header";
-import { BehaviorSubject } from "rxjs";
+import { Observable } from "rxjs";
 
-const mount = (el: Element, { navigate, isSignedIn$ }: HeaderMountOptions) => {
-  ReactDOM.render(<Header navigate={navigate} isSignedIn$={isSignedIn$} />, el);
+const mount = (el: Element, options: HeaderMountOptions) => {
+  ReactDOM.render(<Header {...options} />, el);
 };
 
 if (process.env.NODE_ENV === "development") {
@@ -15,7 +15,8 @@ if (process.env.NODE_ENV === "development") {
       navigate: (route: string) => {
         console.log(`Navigate to route: ${route}`);
       },
-      isSignedIn$: new BehaviorSubject<boolean>(false),
+      isSignedIn$: new Observable<boolean>(),
+      logout: () => {},
     };
 
     mount(rootNode, mockOptions);
