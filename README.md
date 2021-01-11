@@ -1,5 +1,7 @@
 # Micro Frontends in React
 
+Live Demo: https://dnsiwzptduezx.cloudfront.net/
+
 ## How to add a new MFE to repo?
 
 - Run `npm run mfegen dashboard 8084`
