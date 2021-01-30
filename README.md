@@ -1,6 +1,7 @@
 # Micro Frontends in React
 
 Live Demo: https://dnsiwzptduezx.cloudfront.net/
+Repo used during talk: https://github.com/ashwanth1109/mfe-talk
 
 ## How to add a new MFE to repo?
 
